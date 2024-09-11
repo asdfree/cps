@@ -5,7 +5,7 @@ library(httr)
 
 tf <- tempfile()
 
-this_url <-	"https://www2.census.gov/programs-surveys/cps/datasets/2023/march/asecpub23sas.zip"
+this_url <-	"https://www2.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
 
 GET( this_url , write_disk( tf ) , progress() )
 
@@ -174,15 +174,15 @@ glm_result <-
 summary( glm_result )
 count_covered <- svytotal( ~ as.numeric( cov == 1 ) , cps_design )
 
-stopifnot( round( coef( count_covered ) , -5 ) == 304000000 )
+stopifnot( round( coef( count_covered ) , -5 ) == 305200000 )
 
 stopifnot(
-	round( coef( count_covered ) - confint( count_covered , level = 0.9 )[1] , -3 ) == 746000
+	round( coef( count_covered ) - confint( count_covered , level = 0.9 )[1] , -3 ) == 704000
 )
 
 share_covered <- svymean( ~ as.numeric( cov == 1 ) , subset( cps_design , cov > 0 ) )
 
-stopifnot( round( coef( share_covered ) , 3 ) == 0.921 )
+stopifnot( round( coef( share_covered ) , 3 ) == 0.920 )
 
 stopifnot(
 	round( coef( share_covered ) - confint( share_covered , level = 0.9 )[1] , 3 ) == 0.002

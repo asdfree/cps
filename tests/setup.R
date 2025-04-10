@@ -7,7 +7,7 @@ tf <- tempfile()
 
 this_url <-	"ftp://ftp.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
 
-GET( this_url , write_disk( tf ) , progress() )
+GET( this_url , write_disk( tf ) , progress() , timeout( 999 ) )
 
 unzipped_files <- unzip( tf , exdir = tempdir() )
 library(haven)

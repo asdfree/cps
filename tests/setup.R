@@ -5,7 +5,7 @@ library(httr)
 
 tf <- tempfile()
 
-this_url <-	"https://www2.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
+this_url <-	"ftp://ftp.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
 
 GET( this_url , write_disk( tf ) , progress() )
 

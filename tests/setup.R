@@ -6,8 +6,8 @@ library(curl)
 tf <- tempfile()
 
 this_url <-	"ftp://ftp2.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
-options(timeout=999)
-curl_download(this_url, tf, mode='wb')
+options(timeout=9999)
+download.file(this_url, tf, mode='wb')
 
 unzipped_files <- unzip( tf , exdir = tempdir() )
 library(haven)

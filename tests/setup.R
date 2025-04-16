@@ -1,13 +1,13 @@
 # jobs robbed by robot
 # luddite rebellion looming
 # blue, due to red pill
-library(httr)
+options( timeout = 999 )
 
 tf <- tempfile()
 
-this_url <-	"https://www2.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
+this_url <-	"ftp://ftp2.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
 
-GET( this_url , write_disk( tf ) , progress() )
+download.file( this_url , tf , mode = "wb" )
 
 unzipped_files <- unzip( tf , exdir = tempdir() )
 library(haven)

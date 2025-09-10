@@ -5,7 +5,7 @@ options( timeout = 999 )
 
 tf <- tempfile()
 
-this_url <-	"ftp://ftp2.census.gov/programs-surveys/cps/datasets/2024/march/asecpub24sas.zip"
+this_url <-	"ftp://ftp2.census.gov/programs-surveys/cps/datasets/2025/march/asecpub25sas.zip"
 
 download.file( this_url , tf , mode = "wb" )
 
@@ -174,10 +174,10 @@ glm_result <-
 summary( glm_result )
 count_covered <- svytotal( ~ as.numeric( cov == 1 ) , cps_design )
 
-stopifnot( round( coef( count_covered ) , -5 ) == 305200000 )
+stopifnot( round( coef( count_covered ) , -5 ) == 310000000 )
 
 stopifnot(
-	round( coef( count_covered ) - confint( count_covered , level = 0.9 )[1] , -3 ) == 704000
+	round( coef( count_covered ) - confint( count_covered , level = 0.9 )[1] , -3 ) == 634000
 )
 
 share_covered <- svymean( ~ as.numeric( cov == 1 ) , subset( cps_design , cov > 0 ) )
